@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title|default('Twig模板预览') }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>{{ title|default('欢迎使用Twig模板预览') }}</h1>
+    
+    {% if items is defined %}
+        <ul>
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <p>{{ content|default('这是一个示例页面') }}</p>
+</body>
+</html> 

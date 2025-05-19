@@ -1,0 +1,28 @@
+# Composer
+/vendor/
+composer.lock
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 项目特定
+/cache/
+.env
+.env.*
+!.env.example
+
+# 日志文件
+*.log
+/logs/
+
+# 临时文件
+*.tmp
+*.temp 
