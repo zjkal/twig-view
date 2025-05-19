@@ -20,7 +20,7 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-            "mkdir -p templates data cache assets/css assets/js assets/images"
+            "@php bin/twig-view"
         ]
     },
     "bin": [

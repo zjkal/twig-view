@@ -17,20 +17,21 @@ $dirs = [
 ];
 
 foreach ($dirs as $dir) {
-    if (!is_dir($rootDir . '/' . $dir)) {
-        mkdir($rootDir . '/' . $dir, 0755, true);
+    $path = $rootDir . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $dir);
+    if (!is_dir($path)) {
+        mkdir($path, 0755, true);
     }
 }
 
 // 复制必要的文件
 $files = [
-    'index.php' => $rootDir . '/index.php',
-    'config.php' => $rootDir . '/config.php'
+    'index.php' => $rootDir . DIRECTORY_SEPARATOR . 'index.php',
+    'config.php' => $rootDir . DIRECTORY_SEPARATOR . 'config.php'
 ];
 
 foreach ($files as $source => $target) {
     if (!file_exists($target)) {
-        copy(__DIR__ . '/../src/' . $source, $target);
+        copy(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $source, $target);
     }
 }
 
