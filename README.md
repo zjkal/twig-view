@@ -37,6 +37,10 @@ composer install
 
 ```
 twig-view/
+├── assets/        # 静态资源目录
+│   ├── css/      # CSS文件
+│   ├── js/       # JavaScript文件
+│   └── images/   # 图片文件
 ├── templates/     # Twig模板文件目录
 ├── data/         # 模板数据文件目录
 ├── cache/        # 模板缓存目录
@@ -48,8 +52,8 @@ twig-view/
 ## 使用方法
 
 1. 创建模板
-- 在 `templates` 目录下创建 `.html.twig` 文件
-- 例如：`templates/about.html.twig`
+- 在 `templates` 目录下创建 `.twig` 文件
+- 例如：`templates/about.twig`
 
 2. 添加数据（可选）
 - 在 `data` 目录下创建同名的PHP文件
@@ -63,8 +67,22 @@ return [
 ```
 
 3. 访问页面
-- 访问 `http://your-domain/about` 将显示 `templates/about.html.twig`
+- 访问 `http://your-domain/about` 将显示 `templates/about.twig`
 - 如果存在 `data/about.php`，其中的数据将被传递给模板
+
+4. 引用静态资源
+- 在模板中引用静态资源时，直接从assets下的目录开始写
+- 例如：
+```twig
+{# CSS文件 #}
+<link rel="stylesheet" href="/css/style.css">
+
+{# JavaScript文件 #}
+<script src="/js/main.js"></script>
+
+{# 图片文件 #}
+<img src="/images/logo.png">
+```
 
 ## 配置说明
 

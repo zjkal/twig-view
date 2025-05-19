@@ -15,12 +15,35 @@ $path = parse_url($requestUri, PHP_URL_PATH);
 // 移除开头的斜杠
 $path = ltrim($path, '/');
 
-// 如果路径为空，默认显示index.html.twig
+// 处理静态资源
+if (preg_match('/\.(css|js|jpg|jpeg|png|gif|ico|svg)$/i', $path)) {
+    $filePath = __DIR__ . '/assets/' . $path;
+    if (file_exists($filePath)) {
+        $mimeTypes = [
+            'css' => 'text/css',
+            'js' => 'application/javascript',
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'png' => 'image/png',
+            'gif' => 'image/gif',
+            'ico' => 'image/x-icon',
+            'svg' => 'image/svg+xml'
+        ];
+        $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        if (isset($mimeTypes[$extension])) {
+            header('Content-Type: ' . $mimeTypes[$extension]);
+        }
+        readfile($filePath);
+        exit;
+    }
+}
+
+// 如果路径为空，默认显示index.twig
 if (empty($path)) {
     $path = 'index.twig';
 }
 
-// 如果路径不以.html.twig结尾，添加后缀
+// 如果路径不以.twig结尾，添加后缀
 if (!preg_match('/\.twig$/', $path)) {
     $path .= '.twig';
 }
