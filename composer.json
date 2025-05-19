@@ -1,6 +1,14 @@
 {
     "name": "zjkal/twig-view",
     "description": "A simple Twig template previewer",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zjkal",
+            "email": "zjkal@qq.com"
+        }
+    ],
     "require": {
         "php": ">=7.4",
         "twig/twig": "^3.0"
@@ -9,5 +17,14 @@
         "psr-4": {
             "App\\": "src/"
         }
-    }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "mkdir -p templates data cache assets/css assets/js assets/images"
+        ]
+    },
+    "bin": [
+        "bin/twig-view"
+    ],
+    "minimum-stability": "stable"
 } 

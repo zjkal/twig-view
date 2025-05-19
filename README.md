@@ -18,6 +18,15 @@
 
 ## 安装步骤
 
+### 方法1：使用Composer创建项目
+
+```bash
+composer create-project zjkal/twig-view my-project
+cd my-project
+```
+
+### 方法2：手动安装
+
 1. 克隆项目
 ```bash
 git clone [项目地址]

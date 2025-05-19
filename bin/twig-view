@@ -1,0 +1,42 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+// 获取项目根目录
+$rootDir = __DIR__ . '/..';
+
+// 创建必要的目录
+$dirs = [
+    'templates',
+    'data',
+    'cache',
+    'assets/css',
+    'assets/js',
+    'assets/images'
+];
+
+foreach ($dirs as $dir) {
+    if (!is_dir($rootDir . '/' . $dir)) {
+        mkdir($rootDir . '/' . $dir, 0755, true);
+    }
+}
+
+// 复制必要的文件
+$files = [
+    'index.php' => $rootDir . '/index.php',
+    'config.php' => $rootDir . '/config.php'
+];
+
+foreach ($files as $source => $target) {
+    if (!file_exists($target)) {
+        copy(__DIR__ . '/../src/' . $source, $target);
+    }
+}
+
+echo "Twig模板预览器安装完成！\n";
+echo "请确保以下目录有正确的写入权限：\n";
+echo "- templates/\n";
+echo "- data/\n";
+echo "- cache/\n";
+echo "- assets/\n"; 
